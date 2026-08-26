@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <title>Villa Maravilla 2026 🌴</title>
+
+  <meta name="theme-color" content="#f4ead5">
+  <meta name="description" content="Benvenuti alla Villa Maravilla 2026 — Trullo Aribi, Ostuni">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f4ead5;
+      color: #173c35;
+      overflow-x: hidden;
+    }
+
+    section {
+      min-height: 100svh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      background:
+        radial-gradient(circle at 50% 30%, rgba(255,255,255,.5), transparent 35%),
+        linear-gradient(180deg, #b9dfdc 0%, #d9e8d0 55%, #f4ead5 100%);
+    }
+
+    .sun {
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: #f6b84b;
+      top: 9%;
+      right: -30px;
+      box-shadow: 0 0 80px rgba(246,184,75,.45);
+      opacity: .9;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      padding: 30px;
+      animation: heroIn 1.3s ease forwards;
+    }
+
+    .small-title {
+      letter-spacing: 5px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      opacity: .7;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(54px, 16vw, 110px);
+      line-height: .85;
+      font-weight: 500;
+      letter-spacing: -5px;
+    }
+
+    .hero-subtitle {
+      margin-top: 25px;
+      font-size: 17px;
+      letter-spacing: 2px;
+    }
+
+    .dates {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 12px 20px;
+      border: 1px solid rgba(23,60,53,.3);
+      border-radius: 100px;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    .scroll {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      letter-spacing: 3px;
+      opacity: .65;
+      animation: bounce 2s infinite;
+    }
+
+    /* =========================
+       DECORAZIONI
+    ========================= */
+
+    .leaf {
+      position: absolute;
+      font-size: 70px;
+      opacity: .18;
+      filter: blur(.2px);
+    }
+
+    .leaf.one {
+      left: -10px;
+      bottom: 15%;
+      transform: rotate(-25deg);
+    }
+
+    .leaf.two {
+      right: -10px;
+      bottom: 28%;
+      transform: rotate(25deg);
+    }
+
+    /* =========================
+       INTRO
+    ========================= */
+
+    .intro {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f4ead5;
+      padding: 70px 25px;
+    }
+
+    .intro-inner {
+      max-width: 650px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 11px;
+      opacity: .55;
+      margin-bottom: 20px;
+    }
+
+    .intro h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(40px, 10vw, 70px);
+      line-height: .95;
+      margin-bottom: 30px;
+    }
+
+    .intro p {
+      font-size: 18px;
+      line-height: 1.7;
+      opacity: .8;
+    }
+
+    .highlight {
+      margin-top: 35px;
+      font-family: Georgia, serif;
+      font-size: 25px;
+    }
+
+    /* =========================
+       REGOLE
+    ========================= */
+
+    .rules {
+      background: #173c35;
+      color: #f4ead5;
+      padding: 80px 20px;
+    }
+
+    .rules-header {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .rules-header h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(45px, 11vw, 80px);
+      line-height: .9;
+    }
+
+    .rules-grid {
+      max-width: 850px;
+      margin: auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    .rule {
+      padding: 28px 25px;
+      border: 1px solid rgba(244,234,213,.2);
+      border-radius: 25px;
+      background: rgba(255,255,255,.035);
+      transform: translateY(40px);
+      opacity: 0;
+      transition: .8s ease;
+    }
+
+    .rule.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .rule-number {
+      font-size: 12px;
+      opacity: .45;
+      letter-spacing: 2px;
+    }
+
+    .rule-title {
+      font-family: Georgia, serif;
+      font-size: 38px;
+      margin: 10px 0;
+    }
+
+    .rule-text {
+      font-size: 15px;
+      line-height: 1.6;
+      opacity: .7;
+    }
+
+    /* =========================
+       PROGRAMMA
+    ========================= */
+
+    .program {
+      padding: 90px 22px;
+      background: #d8e4cf;
+    }
+
+    .program-inner {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .program h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(48px, 12vw, 80px);
+      line-height: .9;
+      margin-bottom: 55px;
+    }
+
+    .day {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 20px;
+      padding: 25px 0;
+      border-top: 1px solid rgba(23,60,53,.2);
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: .8s ease;
+    }
+
+    .day.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .day-number {
+      font-family: Georgia, serif;
+      font-size: 28px;
+    }
+
+    .day h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .day p {
+      opacity: .65;
+      line-height: 1.5;
+    }
+
+    /* =========================
+       AVVISO
+    ========================= */
+
+    .warning {
+      min-height: 80svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 25px;
+      text-align: center;
+      background: #f4ead5;
+    }
+
+    .warning-inner {
+      max-width: 650px;
+    }
+
+    .warning-icon {
+      font-size: 55px;
+      margin-bottom: 25px;
+    }
+
+    .warning h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(40px, 10vw, 65px);
+      margin-bottom: 25px;
+    }
+
+    .warning p {
+      font-size: 16px;
+      line-height: 1.8;
+      opacity: .7;
+    }
+
+    /* =========================
+       FINALE
+    ========================= */
+
+    .final {
+      min-height: 100svh;
+      background:
+        linear-gradient(rgba(23,60,53,.72), rgba(23,60,53,.92)),
+        linear-gradient(135deg, #b6d8d1, #d9e4c9);
+
+      color: #f4ead5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .final-content {
+      max-width: 750px;
+    }
+
+    .final-small {
+      letter-spacing: 5px;
+      font-size: 11px;
+      opacity: .6;
+      margin-bottom: 25px;
+    }
+
+    .final h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(55px, 15vw, 110px);
+      line-height: .82;
+      letter-spacing: -4px;
+    }
+
+    .final-date {
+      margin-top: 35px;
+      font-size: 13px;
+      letter-spacing: 3px;
+      opacity: .7;
+    }
+
+    .emoji-row {
+      margin-top: 35px;
+      font-size: 32px;
+      letter-spacing: 8px;
+    }
+
+    /* =========================
+       ANIMAZIONI
+    ========================= */
+
+    @keyframes heroIn {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translate(-50%, 0);
+      }
+
+      50% {
+        transform: translate(-50%, 10px);
+      }
+    }
+
+    /* =========================
+       DESKTOP
+    ========================= */
+
+    @media (min-width: 700px) {
+
+      .rules-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .rule:nth-child(2) {
+        margin-top: 50px;
+      }
+
+      .rule:nth-child(3) {
+        margin-top: -30px;
+      }
+
+      .rule:nth-child(4) {
+        margin-top: 20px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="sun"></div>
+
+    <div class="leaf one">🌿</div>
+    <div class="leaf two">🌿</div>
+
+    <div class="hero-content">
+
+      <div class="small-title">
+        TRULLO ARIBI · OSTUNI · PUGLIA
+      </div>
+
+      <h1>
+        VILLA<br>
+        MARAVILLA
+      </h1>
+
+      <div class="hero-subtitle">
+        ESTATE 2026
+      </div>
+
+      <div class="dates">
+        27 — 30 AGOSTO
+      </div>
+
+    </div>
+
+    <div class="scroll">
+      SCORRI ↓
+    </div>
+
+  </section>
+
+
+  <!-- INTRO -->
+
+  <section class="intro">
+
+    <div class="intro-inner reveal">
+
+      <div class="eyebrow">
+        Benvenuti
+      </div>
+
+      <h2>
+        Avete ufficialmente<br>
+        staccato la spina.
+      </h2>
+
+      <p>
+        Per i prossimi quattro giorni il mondo può aspettare.
+        Siete al Trullo Aribi, nel cuore della Puglia,
+        e avete davanti a voi una villa, una piscina,
+        dieci amici e pochissime responsabilità.
+      </p>
+
+      <div class="highlight">
+        La missione è semplice.
+        <br>
+        <strong>Godersela.</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- REGOLE -->
+
+  <section class="rules">
+
+    <div class="rules-header reveal">
+
+      <div class="eyebrow">
+        Regolamento ufficiale
+      </div>
+
+      <h2>
+        LE 4 REGOLE
+      </h2>
+
+    </div>
+
+    <div class="rules-grid">
+
+      <div class="rule">
+        <div class="rule-number">01</div>
+
+        <div class="rule-title">
+          CHILL 🧘‍♂️
+        </div>
+
+        <div class="rule-text">
+          Niente stress. Niente corse.
+          Niente orari.
+          Siamo in vacanza, comportiamoci di conseguenza.
+        </div>
+      </div>
+
+
+      <div class="rule">
+        <div class="rule-number">02</div>
+
+        <div class="rule-title">
+          CHILL 😎
+        </div>
+
+        <div class="rule-text">
+          Perché una volta sola non era abbastanza.
+          Se qualcosa richiede troppa energia,
+          probabilmente può aspettare.
+        </div>
+      </div>
+
+
+      <div class="rule">
+        <div class="rule-number">03</div>
+
+        <div class="rule-title">
+          BERE 🍹
+        </div>
+
+        <div class="rule-text">
+          Idratarsi è fondamentale.
+          Acqua, cocktail, birra, spritz:
+          l'importante è mantenere il giusto equilibrio.
+        </div>
+      </div>
+
+
+      <div class="rule">
+        <div class="rule-number">04</div>
+
+        <div class="rule-title">
+          MANGIARE 🍝
+        </div>
+
+        <div class="rule-text">
+          Siamo in Puglia.
+          Mangiare bene non è un'opzione,
+          è praticamente un obbligo morale.
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROGRAMMA -->
+
+  <section class="program">
+
+    <div class="program-inner">
+
+      <div class="eyebrow">
+        Programma indicativo
+      </div>
+
+      <h2>
+        COSA<br>
+        SUCCEDERÀ
+      </h2>
+
+
+      <div class="day">
+
+        <div class="day-number">
+          27
+        </div>
+
+        <div>
+          <h3>ARRIVO</h3>
+
+          <p>
+            Sistemazione → piscina → aperitivo →
+            cena → “vediamo cosa facciamo dopo”.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="day">
+
+        <div class="day-number">
+          28
+        </div>
+
+        <div>
+          <h3>FULL PUGLIA MODE</h3>
+
+          <p>
+            Mare → mangiare → bere → piscina →
+            chill → ripetere.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="day">
+
+        <div class="day-number">
+          29
+        </div>
+
+        <div>
+          <h3>ORMAl VIVIAMO QUI</h3>
+
+          <p>
+            A questo punto il Trullo Aribi
+            sarà diventato ufficialmente casa nostra.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="day">
+
+        <div class="day-number">
+          30
+        </div>
+
+        <div>
+          <h3>LA FINE</h3>
+
+          <p>
+            Valigie → ultimi bagni → negazione della realtà →
+            “raga, rifacciamolo l'anno prossimo”.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- AVVISO -->
+
+  <section class="warning">
+
+    <div class="warning-inner reveal">
+
+      <div class="warning-icon">
+        ⚠️
+      </div>
+
+      <h2>
+        ATTENZIONE
+      </h2>
+
+      <p>
+        Il soggiorno presso Villa Maravilla potrebbe causare
+        improvvisa voglia di tuffarsi in piscina,
+        aumento incontrollato del consumo di cibo,
+        perdita della cognizione del tempo,
+        fotografie compromettenti e forte nostalgia
+        una volta tornati alla vita reale.
+      </p>
+
+      <br>
+
+      <p>
+        <strong>
+          La direzione non si assume alcuna responsabilità.
+        </strong>
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINALE -->
+
+  <section class="final">
+
+    <div class="final-content reveal">
+
+      <div class="final-small">
+        TRULLO ARIBI · OSTUNI
+      </div>
+
+      <h2>
+        CHILL.<br>
+        MANGIA.<br>
+        BEVI.
+      </h2>
+
+      <div class="emoji-row">
+        🌴 🍹 ☀️ 🏊‍♂️
+      </div>
+
+      <div class="final-date">
+        VILLA MARAVILLA 2026
+        <br><br>
+        27 — 30 AGOSTO
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <script>
+
+    /*
+      ANIMAZIONI ALLO SCROLL
+    */
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.15
+      }
+    );
+
+
+    document
+      .querySelectorAll(".rule, .day, .reveal")
+      .forEach(element => {
+
+        observer.observe(element);
+
+      });
+
+
+    /*
+      PARALLASSE LEGGERO DEL SOLE
+    */
+
+    const sun = document.querySelector(".sun");
+
+    window.addEventListener("scroll", () => {
+
+      const scroll = window.scrollY;
+
+      if (sun) {
+
+        sun.style.transform =
+          `translateY(${scroll * 0.18}px)`;
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
