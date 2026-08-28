@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width,
+             initial-scale=1.0,
+             maximum-scale=1.0,
+             user-scalable=no"
+  >
+
+  <title>Villa Maravilla 🦆🌴</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background:
+        linear-gradient(
+          180deg,
+          #75d4d0 0%,
+          #a5dfd0 25%,
+          #f7d99a 65%,
+          #f2a56b 100%
+        );
+
+      color: #173c3b;
+
+      min-height: 100vh;
+
+      overflow-x: hidden;
+    }
+
+
+    /* ==================================================
+       INTRO
+       ================================================== */
+
+    #intro {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 999;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+
+      padding: 30px;
+
+      background:
+        radial-gradient(
+          circle at 50% 25%,
+          #b8eee5 0%,
+          #75d4d0 40%,
+          #efc981 100%
+        );
+
+      transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+    }
+
+
+    #intro.hidden {
+
+      opacity: 0;
+
+      visibility: hidden;
+
+      pointer-events: none;
+    }
+
+
+    .intro-content {
+
+      animation:
+        introAppear 1s ease;
+    }
+
+
+    @keyframes introAppear {
+
+      from {
+
+        opacity: 0;
+
+        transform:
+          translateY(30px)
+          scale(0.9);
+      }
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          translateY(0)
+          scale(1);
+      }
+    }
+
+
+    .intro-duck {
+
+      width: 220px;
+
+      max-width: 70vw;
+
+      border-radius: 50%;
+
+      margin-bottom: 20px;
+
+      animation:
+        duckFloat 2.5s ease-in-out infinite;
+
+      filter:
+        drop-shadow(
+          0 20px 20px
+          rgba(0,0,0,.22)
+        );
+    }
+
+
+    @keyframes duckFloat {
+
+      0%,
+      100% {
+
+        transform:
+          translateY(0)
+          rotate(-2deg);
+      }
+
+      50% {
+
+        transform:
+          translateY(-15px)
+          rotate(2deg);
+      }
+    }
+
+
+    .intro-title {
+
+      font-size: 28px;
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
+
+      margin-bottom: 10px;
+    }
+
+
+    .intro-subtitle {
+
+      font-size: 16px;
+
+      opacity: .75;
+
+      margin-bottom: 30px;
+    }
+
+
+    .enter-button {
+
+      border: 0;
+
+      background: #173c3b;
+
+      color: white;
+
+      padding: 17px 32px;
+
+      border-radius: 20px;
+
+      font-size: 17px;
+
+      font-weight: 800;
+
+      box-shadow:
+        0 12px 30px
+        rgba(23,60,59,.3);
+
+      animation:
+        pulseButton 2s infinite;
+    }
+
+
+    @keyframes pulseButton {
+
+      0%,
+      100% {
+
+        transform: scale(1);
+      }
+
+      50% {
+
+        transform: scale(1.04);
+      }
+    }
+
+
+    /* ==================================================
+       DECORAZIONI
+       ================================================== */
+
+    .sun {
+
+      position: fixed;
+
+      width: 190px;
+
+      height: 190px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,238,157,.65);
+
+      top: -80px;
+
+      right: -60px;
+
+      filter: blur(2px);
+
+      pointer-events: none;
+    }
+
+
+    .palm {
+
+      position: fixed;
+
+      font-size: 85px;
+
+      opacity: .16;
+
+      pointer-events: none;
+
+      z-index: 0;
+    }
+
+
+    .palm-left {
+
+      bottom: 10px;
+
+      left: -20px;
+
+      transform: rotate(-10deg);
+    }
+
+
+    .palm-right {
+
+      bottom: 50px;
+
+      right: -20px;
+
+      transform: rotate(12deg);
+    }
+
+
+    /* bolle */
+
+    .bubble {
+
+      position: fixed;
+
+      bottom: -50px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,.22);
+
+      pointer-events: none;
+
+      animation:
+        bubbleUp linear infinite;
+    }
+
+
+    @keyframes bubbleUp {
+
+      from {
+
+        transform:
+          translateY(0)
+          scale(1);
+
+        opacity: 0;
+      }
+
+      20% {
+
+        opacity: .7;
+      }
+
+      to {
+
+        transform:
+          translateY(-120vh)
+          scale(1.5);
+
+        opacity: 0;
+      }
+    }
+
+
+    /* ==================================================
+       MAIN
+       ================================================== */
+
+    .page {
+
+      position: relative;
+
+      z-index: 2;
+
+      min-height: 100vh;
+
+      padding:
+        35px
+        18px
+        50px;
+
+      display: flex;
+
+      justify-content: center;
+    }
+
+
+    .container {
+
+      width: 100%;
+
+      max-width: 440px;
+    }
+
+
+    /* ==================================================
+       HEADER
+       ================================================== */
+
+    .header {
+
+      text-align: center;
+
+      margin-bottom: 25px;
+
+      opacity: 0;
+
+      transform: translateY(-20px);
+
+      animation:
+        slideDown .8s ease forwards;
+
+      animation-delay: .3s;
+    }
+
+
+    @keyframes slideDown {
+
+      to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+      }
+    }
+
+
+    .mini-duck {
+
+      width: 145px;
+
+      border-radius: 50%;
+
+      filter:
+        drop-shadow(
+          0 15px 15px
+          rgba(0,0,0,.2)
+        );
+
+      margin-bottom: 12px;
+    }
+
+
+    .villa-title {
+
+      font-size: 39px;
+
+      font-weight: 950;
+
+      letter-spacing: -1px;
+
+      line-height: .95;
+
+      color: white;
+
+      text-shadow:
+        0 4px 0 rgba(23,60,59,.18),
+        0 7px 20px rgba(0,0,0,.15);
+    }
+
+
+    .villa-title span {
+
+      color: #ffd33d;
+    }
+
+
+    .tag {
+
+      display: inline-block;
+
+      margin-top: 15px;
+
+      padding: 8px 15px;
+
+      border-radius: 50px;
+
+      background:
+        rgba(255,255,255,.75);
+
+      font-size: 13px;
+
+      font-weight: 800;
+
+      transform: rotate(-2deg);
+    }
+
+
+    /* ==================================================
+       CARD
+       ================================================== */
+
+    .card {
+
+      background:
+        rgba(255,255,255,.90);
+
+      backdrop-filter:
+        blur(18px);
+
+      -webkit-backdrop-filter:
+        blur(18px);
+
+      border-radius: 30px;
+
+      padding: 28px 20px 24px;
+
+      box-shadow:
+        0 25px 70px
+        rgba(40,80,70,.22);
+
+      opacity: 0;
+
+      transform:
+        translateY(30px);
+
+      animation:
+        cardAppear .9s ease forwards;
+
+      animation-delay: .6s;
+    }
+
+
+    @keyframes cardAppear {
+
+      to {
+
+        opacity: 1;
+
+        transform:
+          translateY(0);
+      }
+    }
+
+
+    .found {
+
+      text-align: center;
+
+      font-size: 22px;
+
+      font-weight: 900;
+
+      margin-bottom: 8px;
+    }
+
+
+    .found-text {
+
+      text-align: center;
+
+      font-size: 15px;
+
+      opacity: .7;
+
+      margin-bottom: 25px;
+    }
+
+
+    /* ==================================================
+       CHOICES
+       ================================================== */
+
+    .choice-title {
+
+      text-align: center;
+
+      font-size: 17px;
+
+      font-weight: 800;
+
+      margin-bottom: 13px;
+    }
+
+
+    .choice {
+
+      position: relative;
+
+      border-radius: 20px;
+
+      padding: 20px 15px;
+
+      margin-bottom: 12px;
+
+      text-align: center;
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+    }
+
+
+    .choice-a {
+
+      background:
+        #e6f3ef;
+
+      border:
+        2px solid #9bd8c9;
+    }
+
+
+    .choice-b {
+
+      background:
+        #fff4cf;
+
+      border:
+        2px solid #f1c93c;
+
+      animation:
+        choiceGlow 2.5s infinite;
+    }
+
+
+    @keyframes choiceGlow {
+
+      0%,
+      100% {
+
+        box-shadow:
+          0 0 0 rgba(241,201,60,0);
+      }
+
+      50% {
+
+        box-shadow:
+          0 0 22px
+          rgba(241,201,60,.35);
+      }
+    }
+
+
+    .choice:hover {
+
+      transform:
+        translateY(-3px);
+    }
+
+
+    .choice-label {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      width: 42px;
+
+      height: 42px;
+
+      border-radius: 50%;
+
+      margin-bottom: 10px;
+
+      font-weight: 900;
+
+      font-size: 17px;
+    }
+
+
+    .choice-a
+    .choice-label {
+
+      background:
+        #75cdbb;
+    }
+
+
+    .choice-b
+    .choice-label {
+
+      background:
+        #ffd33d;
+    }
+
+
+    .choice-text {
+
+      font-size: 16px;
+
+      line-height: 1.4;
+
+      font-weight: 600;
+    }
+
+
+    .recommend {
+
+      text-align: center;
+
+      margin:
+        20px 0 8px;
+
+      font-size: 20px;
+
+      font-weight: 900;
+
+      transform:
+        rotate(-1deg);
+    }
+
+
+    .vote {
+
+      text-align: center;
+
+      font-size: 15px;
+
+      margin-bottom: 25px;
+
+      opacity: .75;
+    }
+
+
+    /* ==================================================
+       INSTAGRAM
+       ================================================== */
+
+    .section-title {
+
+      text-align: center;
+
+      font-size: 15px;
+
+      font-weight: 800;
+
+      margin-bottom: 12px;
+    }
+
+
+    .instagram {
+
+      display: block;
+
+      text-decoration: none;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          #833ab4,
+          #fd1d1d,
+          #fcb045
+        );
+
+      border-radius: 19px;
+
+      padding: 17px 20px;
+
+      text-align: center;
+
+      font-size: 18px;
+
+      font-weight: 900;
+
+      box-shadow:
+        0 10px 25px
+        rgba(131,58,180,.25);
+
+      transition:
+        transform .2s ease;
+    }
+
+
+    .instagram:active {
+
+      transform:
+        scale(.96);
+    }
+
+
+    .instagram-small {
+
+      display: block;
+
+      margin-top: 4px;
+
+      font-size: 13px;
+
+      font-weight: 500;
+
+      opacity: .9;
+    }
+
+
+    /* ==================================================
+       SPOTIFY
+       ================================================== */
+
+    .spotify {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      text-decoration: none;
+
+      color: white;
+
+      background: #121212;
+
+      border-radius: 19px;
+
+      padding: 15px 17px;
+
+      margin-top: 13px;
+
+      box-shadow:
+        0 8px 20px
+        rgba(0,0,0,.18);
+
+      transition:
+        transform .2s ease;
+    }
+
+
+    .spotify:active {
+
+      transform:
+        scale(.96);
+    }
+
+
+    .spotify-left {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+    }
+
+
+    .spotify-logo {
+
+      width: 42px;
+
+      height: 42px;
+
+      border-radius: 50%;
+
+      background: #1ed760;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: black;
+
+      font-size: 21px;
+
+      font-weight: 900;
+    }
+
+
+    .song {
+
+      text-align: left;
+    }
+
+
+    .song-title {
+
+      font-weight: 900;
+
+      font-size: 16px;
+    }
+
+
+    .song-artist {
+
+      font-size: 12px;
+
+      color: #1ed760;
+
+      margin-top: 2px;
+    }
+
+
+    .play {
+
+      width: 42px;
+
+      height: 42px;
+
+      border:
+        2px solid white;
+
+      border-radius: 50%;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 16px;
+    }
+
+
+    /* ==================================================
+       FOOTER
+       ================================================== */
+
+    .footer {
+
+      margin-top: 22px;
+
+      padding: 18px;
+
+      border-radius: 18px;
+
+      background:
+        rgba(245,239,225,.9);
+
+      text-align: center;
+
+      font-size: 14px;
+
+      line-height: 1.45;
+
+      font-style: italic;
+    }
+
+
+    .heart {
+
+      color: #ef6d8a;
+
+      font-size: 20px;
+    }
+
+
+    /* ==================================================
+       RESPONSIVE
+       ================================================== */
+
+    @media (max-width: 380px) {
+
+      .villa-title {
+
+        font-size: 33px;
+      }
+
+      .card {
+
+        padding: 23px 16px;
+      }
+
+      .mini-duck {
+
+        width: 125px;
+      }
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- ================================================
+       INTRO
+       ================================================ -->
+
+  <div id="intro">
+
+    <div class="intro-content">
+
+      <!-- La tua paperella -->
+      <img
+        src="paperella.png"
+        class="intro-duck"
+        alt="Paperella Villa Maravilla"
+      >
+
+      <div class="intro-title">
+        HAI TROVATO LA PAPERELLA 🦆
+      </div>
+
+      <div class="intro-subtitle">
+        Ma forse è stata lei a trovare te...
+      </div>
+
+      <button
+        class="enter-button"
+        onclick="enterVilla()"
+      >
+        TAP TO ENTER 🌴
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- Decorazioni -->
+
+  <div class="sun"></div>
+
+  <div class="palm palm-left">
+    🌴
+  </div>
+
+  <div class="palm palm-right">
+    🌴
+  </div>
+
+
+
+  <!-- Bolle -->
+
+  <div
+    class="bubble"
+    style="
+      width:20px;
+      height:20px;
+      left:10%;
+      animation-duration:9s;
+    "
+  ></div>
+
+  <div
+    class="bubble"
+    style="
+      width:12px;
+      height:12px;
+      left:25%;
+      animation-duration:12s;
+      animation-delay:3s;
+    "
+  ></div>
+
+  <div
+    class="bubble"
+    style="
+      width:25px;
+      height:25px;
+      left:75%;
+      animation-duration:10s;
+      animation-delay:1s;
+    "
+  ></div>
+
+  <div
+    class="bubble"
+    style="
+      width:10px;
+      height:10px;
+      left:88%;
+      animation-duration:13s;
+      animation-delay:4s;
+    "
+  ></div>
+
+
+
+  <!-- ================================================
+       PAGINA
+       ================================================ -->
+
+  <main class="page">
+
+    <div class="container">
+
+
+      <!-- HEADER -->
+
+      <header class="header">
+
+        <img
+          src="paperella.png"
+          class="mini-duck"
+          alt="Paperella"
+        >
+
+        <div class="villa-title">
+          VILLA
+          <span>MARAVILLA</span>
+        </div>
+
+        <div class="tag">
+          🦆 APPROVATA DALLA PAPERELLA
+        </div>
+
+      </header>
+
+
+
+      <!-- CARD -->
+
+      <section class="card">
+
+
+        <div class="found">
+          Hai trovato la paperella.
+        </div>
+
+        <div class="found-text">
+          Adesso hai due possibilità...
+        </div>
+
+
+
+        <!-- A -->
+
+        <div class="choice-title">
+          Scegli con attenzione 👀
+        </div>
+
+
+        <div class="choice choice-a">
+
+          <div class="choice-label">
+            A)
+          </div>
+
+          <div class="choice-text">
+
+            Ignorare questo messaggio
+            e vivere una vita normale.
+
+            <br><br>
+
+            😐
+
+          </div>
+
+        </div>
+
+
+
+        <!-- B -->
+
+        <div class="choice choice-b">
+
+          <div class="choice-label">
+            B)
+          </div>
+
+          <div class="choice-text">
+
+            Venire a bere qualcosa
+            in una villa con piscina.
+
+            <br><br>
+
+            🏊‍♀️ 🍹 🎶 😎
+
+          </div>
+
+        </div>
+
+
+
+        <div class="recommend">
+
+          Personalmente consiglio
+          <strong>B.</strong> 😉
+
+        </div>
+
+
+        <div class="vote">
+
+          La paperella ha già votato. 🦆
+
+        </div>
+
+
+
+        <!-- INSTAGRAM -->
+
+        <div class="section-title">
+
+          Se vuoi sapere dove e quando:
+
+        </div>
+
+
+        <a
+          class="instagram"
+          href="https://www.instagram.com/dam_ian_spoll?igsi=azZ6OTZ4a3hzZHZy&utm_source=qr"
+          target="_blank"
+          rel="noopener"
+        >
+
+          📲 INSTAGRAM
+
+          <span class="instagram-small">
+            Scrivimi “PAPERELLA”
+          </span>
+
+        </a>
+
+
+
+        <!-- SPOTIFY -->
+
+        <a
+          class="spotify"
+          href="https://open.spotify.com/search/Call%20Me%20Maybe%20Carly%20Rae%20Jepsen"
+          target="_blank"
+          rel="noopener"
+        >
+
+          <div class="spotify-left">
+
+            <div class="spotify-logo">
+              ♪
+            </div>
+
+            <div class="song">
+
+              <div class="song-title">
+                CALL ME MAYBE
+              </div>
+
+              <div class="song-artist">
+                Carly Rae Jepsen
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="play">
+            ▶
+          </div>
+
+        </a>
+
+
+
+        <!-- FOOTER -->
+
+        <div class="footer">
+
+          P.S. La paperella sostiene
+          di avere un ottimo gusto.
+
+          <br>
+
+          <span class="heart">
+            ♥
+          </span>
+
+        </div>
+
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+
+  <!-- ================================================
+       JAVASCRIPT
+       ================================================ -->
+
+  <script>
+
+    function enterVilla() {
+
+      const intro =
+        document.getElementById("intro");
+
+      intro.classList.add("hidden");
+
+    }
+
+
+    /*
+      Piccola vibrazione quando si entra,
+      se il telefono la supporta.
+    */
+
+    function enterVilla() {
+
+      const intro =
+        document.getElementById("intro");
+
+      intro.classList.add("hidden");
+
+
+      if (
+        navigator.vibrate
+      ) {
+
+        navigator.vibrate(40);
+
+      }
+
+    }
+
+  </script>
+
+
+</body>
+</html>
