@@ -1,940 +1,1205 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
 
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width,
-             initial-scale=1.0,
-             maximum-scale=1.0,
-             user-scalable=no"
-  >
+<meta name="viewport"
+content="width=device-width,
+initial-scale=1.0,
+maximum-scale=1.0,
+user-scalable=no">
 
-  <title>Villa Maravilla 🦆🌴</title>
+<meta name="theme-color" content="#75d4d0">
 
-  <style>
+<title>Villa Maravilla 🦆🌴</title>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
 
-    html {
-      scroll-behavior: smooth;
-    }
+<style>
 
-    body {
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
+/* ================================
+   BASE
+================================ */
 
-      background:
-        linear-gradient(
-          180deg,
-          #75d4d0 0%,
-          #a5dfd0 25%,
-          #f7d99a 65%,
-          #f2a56b 100%
-        );
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-      color: #173c3b;
+html {
+  scroll-behavior: smooth;
+}
 
-      min-height: 100vh;
+body {
 
-      overflow-x: hidden;
-    }
+  min-height: 100vh;
 
+  font-family:
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  sans-serif;
 
-    /* ==================================================
-       INTRO
-       ================================================== */
+  background:
+  linear-gradient(
+    180deg,
+    #75d4d0 0%,
+    #a5dfd0 28%,
+    #f7d99a 67%,
+    #f2a56b 100%
+  );
 
-    #intro {
+  color: #173c3b;
 
-      position: fixed;
+  overflow-x: hidden;
+}
 
-      inset: 0;
+button,
+a {
+  font: inherit;
+}
 
-      z-index: 999;
 
-      display: flex;
+/* ================================
+   INTRO
+================================ */
 
-      align-items: center;
+#intro {
 
-      justify-content: center;
+  position: fixed;
 
-      text-align: center;
+  inset: 0;
 
-      padding: 30px;
+  z-index: 999;
 
-      background:
-        radial-gradient(
-          circle at 50% 25%,
-          #b8eee5 0%,
-          #75d4d0 40%,
-          #efc981 100%
-        );
+  display: flex;
 
-      transition:
-        opacity 0.8s ease,
-        visibility 0.8s ease;
-    }
+  align-items: center;
 
+  justify-content: center;
 
-    #intro.hidden {
+  text-align: center;
 
-      opacity: 0;
+  padding: 28px;
 
-      visibility: hidden;
+  background:
+  radial-gradient(
+    circle at 50% 25%,
+    #c3f1e9 0%,
+    #75d4d0 43%,
+    #efc981 100%
+  );
 
-      pointer-events: none;
-    }
+  transition:
+  opacity 0.8s ease,
+  visibility 0.8s ease;
+}
 
 
-    .intro-content {
+#intro.hidden {
 
-      animation:
-        introAppear 1s ease;
-    }
+  opacity: 0;
 
+  visibility: hidden;
 
-    @keyframes introAppear {
+  pointer-events: none;
+}
 
-      from {
 
-        opacity: 0;
+.intro-content {
 
-        transform:
-          translateY(30px)
-          scale(0.9);
-      }
+  animation:
+  introAppear 0.9s ease;
+}
 
-      to {
 
-        opacity: 1;
+@keyframes introAppear {
 
-        transform:
-          translateY(0)
-          scale(1);
-      }
-    }
+  from {
 
+    opacity: 0;
 
-    .intro-duck {
+    transform:
+    translateY(30px)
+    scale(0.92);
 
-      width: 220px;
+  }
 
-      max-width: 70vw;
+  to {
 
-      border-radius: 50%;
+    opacity: 1;
 
-      margin-bottom: 20px;
+    transform: none;
 
-      animation:
-        duckFloat 2.5s ease-in-out infinite;
+  }
 
-      filter:
-        drop-shadow(
-          0 20px 20px
-          rgba(0,0,0,.22)
-        );
-    }
+}
 
 
-    @keyframes duckFloat {
+/* ================================
+   PAPERELLA
+================================ */
 
-      0%,
-      100% {
+.intro-duck {
 
-        transform:
-          translateY(0)
-          rotate(-2deg);
-      }
+  width: 220px;
 
-      50% {
+  max-width: 72vw;
 
-        transform:
-          translateY(-15px)
-          rotate(2deg);
-      }
-    }
+  margin-bottom: 18px;
 
+  border-radius: 50%;
 
-    .intro-title {
+  filter:
+  drop-shadow(
+    0 18px 18px
+    rgba(0,0,0,.22)
+  );
 
-      font-size: 28px;
+  animation:
+  duckFloat 2.6s
+  ease-in-out infinite;
+}
 
-      font-weight: 900;
 
-      letter-spacing: 1px;
+.mini-duck {
 
-      margin-bottom: 10px;
-    }
+  width: 150px;
 
+  margin-bottom: 12px;
 
-    .intro-subtitle {
+  border-radius: 50%;
 
-      font-size: 16px;
+  filter:
+  drop-shadow(
+    0 15px 15px
+    rgba(0,0,0,.20)
+  );
 
-      opacity: .75;
+  animation:
+  duckFloat 2.6s
+  ease-in-out infinite;
+}
 
-      margin-bottom: 30px;
-    }
 
+@keyframes duckFloat {
 
-    .enter-button {
+  0%,
+  100% {
 
-      border: 0;
+    transform:
+    translateY(0)
+    rotate(-2deg);
 
-      background: #173c3b;
+  }
 
-      color: white;
+  50% {
 
-      padding: 17px 32px;
+    transform:
+    translateY(-13px)
+    rotate(2deg);
 
-      border-radius: 20px;
+  }
 
-      font-size: 17px;
+}
 
-      font-weight: 800;
 
-      box-shadow:
-        0 12px 30px
-        rgba(23,60,59,.3);
+/* ================================
+   INTRO TEXT
+================================ */
 
-      animation:
-        pulseButton 2s infinite;
-    }
+.intro-title {
 
+  font-size: 28px;
 
-    @keyframes pulseButton {
+  font-weight: 950;
 
-      0%,
-      100% {
+  letter-spacing: .5px;
+}
 
-        transform: scale(1);
-      }
 
-      50% {
+.intro-subtitle {
 
-        transform: scale(1.04);
-      }
-    }
+  font-size: 16px;
 
+  opacity: .72;
 
-    /* ==================================================
-       DECORAZIONI
-       ================================================== */
+  margin:
+  9px 0 28px;
+}
 
-    .sun {
 
-      position: fixed;
+/* ================================
+   ENTER BUTTON
+================================ */
 
-      width: 190px;
+.enter-button {
 
-      height: 190px;
+  border: 0;
 
-      border-radius: 50%;
+  cursor: pointer;
 
-      background:
-        rgba(255,238,157,.65);
+  color: white;
 
-      top: -80px;
+  background: #173c3b;
 
-      right: -60px;
+  border-radius: 20px;
 
-      filter: blur(2px);
+  padding:
+  17px 30px;
 
-      pointer-events: none;
-    }
+  font-size: 17px;
 
+  font-weight: 900;
 
-    .palm {
+  box-shadow:
+  0 12px 30px
+  rgba(23,60,59,.28);
 
-      position: fixed;
+  animation:
+  pulseButton 2s infinite;
+}
 
-      font-size: 85px;
 
-      opacity: .16;
+@keyframes pulseButton {
 
-      pointer-events: none;
+  0%,
+  100% {
 
-      z-index: 0;
-    }
+    transform: scale(1);
 
+  }
 
-    .palm-left {
+  50% {
 
-      bottom: 10px;
+    transform: scale(1.04);
 
-      left: -20px;
+  }
 
-      transform: rotate(-10deg);
-    }
+}
 
 
-    .palm-right {
+/* ================================
+   SFONDO
+================================ */
 
-      bottom: 50px;
+.sun {
 
-      right: -20px;
+  position: fixed;
 
-      transform: rotate(12deg);
-    }
+  width: 190px;
 
+  height: 190px;
 
-    /* bolle */
+  border-radius: 50%;
 
-    .bubble {
+  background:
+  rgba(255,238,157,.62);
 
-      position: fixed;
+  top: -80px;
 
-      bottom: -50px;
+  right: -60px;
 
-      border-radius: 50%;
+  filter: blur(2px);
 
-      background:
-        rgba(255,255,255,.22);
+  pointer-events: none;
+}
 
-      pointer-events: none;
 
-      animation:
-        bubbleUp linear infinite;
-    }
+.palm {
 
+  position: fixed;
 
-    @keyframes bubbleUp {
+  font-size: 85px;
 
-      from {
+  opacity: .15;
 
-        transform:
-          translateY(0)
-          scale(1);
+  pointer-events: none;
 
-        opacity: 0;
-      }
+  z-index: 0;
+}
 
-      20% {
 
-        opacity: .7;
-      }
+.palm-left {
 
-      to {
+  bottom: 10px;
 
-        transform:
-          translateY(-120vh)
-          scale(1.5);
+  left: -20px;
 
-        opacity: 0;
-      }
-    }
+  transform:
+  rotate(-10deg);
+}
 
 
-    /* ==================================================
-       MAIN
-       ================================================== */
+.palm-right {
 
-    .page {
+  bottom: 50px;
 
-      position: relative;
+  right: -20px;
 
-      z-index: 2;
+  transform:
+  rotate(12deg);
+}
 
-      min-height: 100vh;
 
-      padding:
-        35px
-        18px
-        50px;
+/* ================================
+   BOLLE
+================================ */
 
-      display: flex;
+.bubble {
 
-      justify-content: center;
-    }
+  position: fixed;
 
+  bottom: -50px;
 
-    .container {
+  border-radius: 50%;
 
-      width: 100%;
+  background:
+  rgba(255,255,255,.23);
 
-      max-width: 440px;
-    }
+  pointer-events: none;
 
+  animation:
+  bubbleUp
+  linear infinite;
+}
 
-    /* ==================================================
-       HEADER
-       ================================================== */
 
-    .header {
+@keyframes bubbleUp {
 
-      text-align: center;
+  from {
 
-      margin-bottom: 25px;
+    transform:
+    translateY(0)
+    scale(1);
 
-      opacity: 0;
+    opacity: 0;
+  }
 
-      transform: translateY(-20px);
+  20% {
 
-      animation:
-        slideDown .8s ease forwards;
+    opacity: .7;
 
-      animation-delay: .3s;
-    }
+  }
 
+  to {
 
-    @keyframes slideDown {
+    transform:
+    translateY(-120vh)
+    scale(1.5);
 
-      to {
+    opacity: 0;
 
-        opacity: 1;
+  }
 
-        transform: translateY(0);
-      }
-    }
+}
 
 
-    .mini-duck {
+/* ================================
+   PAGINA
+================================ */
 
-      width: 145px;
+.page {
 
-      border-radius: 50%;
+  position: relative;
 
-      filter:
-        drop-shadow(
-          0 15px 15px
-          rgba(0,0,0,.2)
-        );
+  z-index: 2;
 
-      margin-bottom: 12px;
-    }
+  min-height: 100vh;
 
+  padding:
+  34px 18px 50px;
 
-    .villa-title {
+  display: flex;
 
-      font-size: 39px;
+  justify-content: center;
+}
 
-      font-weight: 950;
 
-      letter-spacing: -1px;
+.container {
 
-      line-height: .95;
+  width: 100%;
 
-      color: white;
+  max-width: 440px;
+}
 
-      text-shadow:
-        0 4px 0 rgba(23,60,59,.18),
-        0 7px 20px rgba(0,0,0,.15);
-    }
 
+/* ================================
+   HEADER
+================================ */
 
-    .villa-title span {
+.header {
 
-      color: #ffd33d;
-    }
+  text-align: center;
 
+  margin-bottom: 24px;
 
-    .tag {
+  opacity: 0;
 
-      display: inline-block;
+  animation:
+  slideDown
+  .8s ease forwards;
 
-      margin-top: 15px;
+  animation-delay: .2s;
+}
 
-      padding: 8px 15px;
 
-      border-radius: 50px;
+@keyframes slideDown {
 
-      background:
-        rgba(255,255,255,.75);
+  to {
 
-      font-size: 13px;
+    opacity: 1;
 
-      font-weight: 800;
+    transform:
+    translateY(0);
 
-      transform: rotate(-2deg);
-    }
+  }
 
+}
 
-    /* ==================================================
-       CARD
-       ================================================== */
 
-    .card {
+.villa-title {
 
-      background:
-        rgba(255,255,255,.90);
+  font-size: 40px;
 
-      backdrop-filter:
-        blur(18px);
+  font-weight: 950;
 
-      -webkit-backdrop-filter:
-        blur(18px);
+  line-height: .92;
 
-      border-radius: 30px;
+  letter-spacing: -1.5px;
 
-      padding: 28px 20px 24px;
+  color: white;
 
-      box-shadow:
-        0 25px 70px
-        rgba(40,80,70,.22);
+  text-shadow:
+  0 4px 0
+  rgba(23,60,59,.16),
 
-      opacity: 0;
+  0 8px 22px
+  rgba(0,0,0,.14);
+}
 
-      transform:
-        translateY(30px);
 
-      animation:
-        cardAppear .9s ease forwards;
+.villa-title span {
 
-      animation-delay: .6s;
-    }
+  color: #ffd33d;
 
+}
 
-    @keyframes cardAppear {
 
-      to {
+.tag {
 
-        opacity: 1;
+  display: inline-block;
 
-        transform:
-          translateY(0);
-      }
-    }
+  margin-top: 14px;
 
+  padding:
+  8px 14px;
 
-    .found {
+  border-radius: 50px;
 
-      text-align: center;
+  background:
+  rgba(255,255,255,.78);
 
-      font-size: 22px;
+  font-size: 12px;
 
-      font-weight: 900;
+  font-weight: 900;
 
-      margin-bottom: 8px;
-    }
+  transform:
+  rotate(-2deg);
+}
 
 
-    .found-text {
+/* ================================
+   CARD
+================================ */
 
-      text-align: center;
+.card {
 
-      font-size: 15px;
+  background:
+  rgba(255,255,255,.91);
 
-      opacity: .7;
+  backdrop-filter:
+  blur(18px);
 
-      margin-bottom: 25px;
-    }
+  -webkit-backdrop-filter:
+  blur(18px);
 
+  border-radius: 30px;
 
-    /* ==================================================
-       CHOICES
-       ================================================== */
+  padding:
+  27px 19px 23px;
 
-    .choice-title {
+  box-shadow:
+  0 25px 70px
+  rgba(40,80,70,.22);
 
-      text-align: center;
+  opacity: 0;
 
-      font-size: 17px;
+  transform:
+  translateY(28px);
 
-      font-weight: 800;
+  animation:
+  cardIn
+  .9s ease forwards;
 
-      margin-bottom: 13px;
-    }
+  animation-delay: .45s;
+}
 
 
-    .choice {
+@keyframes cardIn {
 
-      position: relative;
+  to {
 
-      border-radius: 20px;
+    opacity: 1;
 
-      padding: 20px 15px;
+    transform:
+    translateY(0);
 
-      margin-bottom: 12px;
+  }
 
-      text-align: center;
+}
 
-      transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-    }
 
+/* ================================
+   MINI GIOCO
+================================ */
 
-    .choice-a {
+.question-screen {
 
-      background:
-        #e6f3ef;
+  display: none;
 
-      border:
-        2px solid #9bd8c9;
-    }
+  text-align: center;
+}
 
 
-    .choice-b {
+.question-screen.active {
 
-      background:
-        #fff4cf;
+  display: block;
 
-      border:
-        2px solid #f1c93c;
+  animation:
+  questionIn
+  .55s ease;
+}
 
-      animation:
-        choiceGlow 2.5s infinite;
-    }
 
+@keyframes questionIn {
 
-    @keyframes choiceGlow {
+  from {
 
-      0%,
-      100% {
+    opacity: 0;
 
-        box-shadow:
-          0 0 0 rgba(241,201,60,0);
-      }
+    transform:
+    scale(.96)
+    translateY(12px);
 
-      50% {
+  }
 
-        box-shadow:
-          0 0 22px
-          rgba(241,201,60,.35);
-      }
-    }
+  to {
 
+    opacity: 1;
 
-    .choice:hover {
+    transform: none;
 
-      transform:
-        translateY(-3px);
-    }
+  }
 
+}
 
-    .choice-label {
 
-      display: inline-flex;
+.question-duck {
 
-      align-items: center;
+  width: 130px;
 
-      justify-content: center;
+  border-radius: 50%;
 
-      width: 42px;
+  filter:
+  drop-shadow(
+    0 12px 12px
+    rgba(0,0,0,.18)
+  );
 
-      height: 42px;
+  margin-bottom: 12px;
+}
 
-      border-radius: 50%;
 
-      margin-bottom: 10px;
+.question-kicker {
 
-      font-weight: 900;
+  font-size: 13px;
 
-      font-size: 17px;
-    }
+  text-transform:
+  uppercase;
 
+  letter-spacing: 1.5px;
 
-    .choice-a
-    .choice-label {
+  font-weight: 900;
 
-      background:
-        #75cdbb;
-    }
+  opacity: .55;
 
+  margin-bottom: 10px;
+}
 
-    .choice-b
-    .choice-label {
 
-      background:
-        #ffd33d;
-    }
+.question-title {
 
+  font-size: 25px;
 
-    .choice-text {
+  line-height: 1.12;
 
-      font-size: 16px;
+  font-weight: 950;
 
-      line-height: 1.4;
+  margin-bottom: 10px;
+}
 
-      font-weight: 600;
-    }
 
+.question-text {
 
-    .recommend {
+  font-size: 16px;
 
-      text-align: center;
+  line-height: 1.45;
 
-      margin:
-        20px 0 8px;
+  opacity: .75;
 
-      font-size: 20px;
+  margin-bottom: 22px;
+}
 
-      font-weight: 900;
 
-      transform:
-        rotate(-1deg);
-    }
+/* ================================
+   RISPOSTE
+================================ */
 
+.answer-grid {
 
-    .vote {
+  display: grid;
 
-      text-align: center;
+  grid-template-columns:
+  1fr 1fr;
 
-      font-size: 15px;
+  gap: 11px;
+}
 
-      margin-bottom: 25px;
 
-      opacity: .75;
-    }
+.answer {
 
+  border:
+  2px solid #f1c93c;
 
-    /* ==================================================
-       INSTAGRAM
-       ================================================== */
+  background:
+  #fff4cf;
 
-    .section-title {
+  color: #173c3b;
 
-      text-align: center;
+  border-radius: 18px;
 
-      font-size: 15px;
+  padding:
+  17px 10px;
 
-      font-weight: 800;
+  cursor: pointer;
 
-      margin-bottom: 12px;
-    }
+  font-weight: 900;
 
+  transition:
+  transform .18s ease,
+  box-shadow .18s ease;
+}
 
-    .instagram {
 
-      display: block;
+.answer:first-child {
 
-      text-decoration: none;
+  border-color:
+  #9bd8c9;
 
-      color: white;
+  background:
+  #e6f3ef;
+}
 
-      background:
-        linear-gradient(
-          135deg,
-          #833ab4,
-          #fd1d1d,
-          #fcb045
-        );
 
-      border-radius: 19px;
+.answer:active {
 
-      padding: 17px 20px;
+  transform:
+  scale(.96);
+}
 
-      text-align: center;
 
-      font-size: 18px;
+.answer small {
 
-      font-weight: 900;
+  display: block;
 
-      box-shadow:
-        0 10px 25px
-        rgba(131,58,180,.25);
+  font-size: 12px;
 
-      transition:
-        transform .2s ease;
-    }
+  font-weight: 600;
 
+  opacity: .65;
 
-    .instagram:active {
+  margin-top: 4px;
+}
 
-      transform:
-        scale(.96);
-    }
 
+/* ================================
+   CONTENUTO FINALE
+================================ */
 
-    .instagram-small {
+.main-content {
 
-      display: block;
+  display: none;
+}
 
-      margin-top: 4px;
 
-      font-size: 13px;
+.main-content.active {
 
-      font-weight: 500;
+  display: block;
 
-      opacity: .9;
-    }
+  animation:
+  questionIn
+  .6s ease;
+}
 
 
-    /* ==================================================
-       SPOTIFY
-       ================================================== */
+.found {
 
-    .spotify {
+  text-align: center;
 
-      display: flex;
+  font-size: 23px;
 
-      align-items: center;
+  font-weight: 950;
 
-      justify-content: space-between;
+  margin-bottom: 7px;
+}
 
-      text-decoration: none;
 
-      color: white;
+.found-text {
 
-      background: #121212;
+  text-align: center;
 
-      border-radius: 19px;
+  font-size: 15px;
 
-      padding: 15px 17px;
+  opacity: .68;
 
-      margin-top: 13px;
+  margin-bottom: 23px;
+}
 
-      box-shadow:
-        0 8px 20px
-        rgba(0,0,0,.18);
 
-      transition:
-        transform .2s ease;
-    }
+/* ================================
+   SCELTE
+================================ */
 
+.choice-title {
 
-    .spotify:active {
+  text-align: center;
 
-      transform:
-        scale(.96);
-    }
+  font-size: 16px;
 
+  font-weight: 900;
 
-    .spotify-left {
+  margin-bottom: 12px;
+}
 
-      display: flex;
 
-      align-items: center;
+.choice {
 
-      gap: 12px;
-    }
+  border-radius: 20px;
 
+  padding:
+  19px 14px;
 
-    .spotify-logo {
+  margin-bottom: 11px;
 
-      width: 42px;
+  text-align: center;
+}
 
-      height: 42px;
 
-      border-radius: 50%;
+.choice-a {
 
-      background: #1ed760;
+  background:
+  #e6f3ef;
 
-      display: flex;
+  border:
+  2px solid #9bd8c9;
+}
 
-      align-items: center;
 
-      justify-content: center;
+.choice-b {
 
-      color: black;
+  background:
+  #fff4cf;
 
-      font-size: 21px;
+  border:
+  2px solid #f1c93c;
 
-      font-weight: 900;
-    }
+  animation:
+  glow 2.5s infinite;
+}
 
 
-    .song {
+@keyframes glow {
 
-      text-align: left;
-    }
+  0%,
+  100% {
 
+    box-shadow:
+    0 0 0
+    rgba(241,201,60,0);
 
-    .song-title {
+  }
 
-      font-weight: 900;
+  50% {
 
-      font-size: 16px;
-    }
+    box-shadow:
+    0 0 23px
+    rgba(241,201,60,.38);
 
+  }
 
-    .song-artist {
+}
 
-      font-size: 12px;
 
-      color: #1ed760;
+.choice-label {
 
-      margin-top: 2px;
-    }
+  display: inline-flex;
 
+  align-items: center;
 
-    .play {
+  justify-content: center;
 
-      width: 42px;
+  width: 41px;
 
-      height: 42px;
+  height: 41px;
 
-      border:
-        2px solid white;
+  border-radius: 50%;
 
-      border-radius: 50%;
+  margin-bottom: 9px;
 
-      display: flex;
+  font-weight: 950;
+}
 
-      align-items: center;
 
-      justify-content: center;
+.choice-a
+.choice-label {
 
-      font-size: 16px;
-    }
+  background:
+  #75cdbb;
+}
 
 
-    /* ==================================================
-       FOOTER
-       ================================================== */
+.choice-b
+.choice-label {
 
-    .footer {
+  background:
+  #ffd33d;
+}
 
-      margin-top: 22px;
 
-      padding: 18px;
+.choice-text {
 
-      border-radius: 18px;
+  font-size: 16px;
 
-      background:
-        rgba(245,239,225,.9);
+  line-height: 1.38;
 
-      text-align: center;
+  font-weight: 650;
+}
 
-      font-size: 14px;
 
-      line-height: 1.45;
+.recommend {
 
-      font-style: italic;
-    }
+  text-align: center;
 
+  margin:
+  19px 0 7px;
 
-    .heart {
+  font-size: 20px;
 
-      color: #ef6d8a;
+  font-weight: 950;
 
-      font-size: 20px;
-    }
+  transform:
+  rotate(-1deg);
+}
 
 
-    /* ==================================================
-       RESPONSIVE
-       ================================================== */
+.vote {
 
-    @media (max-width: 380px) {
+  text-align: center;
 
-      .villa-title {
+  font-size: 15px;
 
-        font-size: 33px;
-      }
+  margin-bottom: 24px;
 
-      .card {
+  opacity: .7;
+}
 
-        padding: 23px 16px;
-      }
 
-      .mini-duck {
+/* ================================
+   INSTAGRAM
+================================ */
 
-        width: 125px;
-      }
-    }
+.section-title {
 
-  </style>
+  text-align: center;
+
+  font-size: 15px;
+
+  font-weight: 850;
+
+  margin-bottom: 11px;
+}
+
+
+.instagram {
+
+  display: block;
+
+  text-decoration: none;
+
+  color: white;
+
+  text-align: center;
+
+  background:
+  linear-gradient(
+    135deg,
+    #833ab4,
+    #fd1d1d,
+    #fcb045
+  );
+
+  border-radius: 19px;
+
+  padding:
+  16px 20px;
+
+  font-size: 18px;
+
+  font-weight: 950;
+
+  box-shadow:
+  0 10px 25px
+  rgba(131,58,180,.25);
+}
+
+
+.instagram-small {
+
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  opacity: .9;
+}
+
+
+/* ================================
+   SPOTIFY
+================================ */
+
+.spotify {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  text-decoration: none;
+
+  color: white;
+
+  background:
+  #121212;
+
+  border-radius: 19px;
+
+  padding:
+  14px 16px;
+
+  margin-top: 12px;
+}
+
+
+.spotify-left {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+}
+
+
+.spotify-logo {
+
+  width: 42px;
+
+  height: 42px;
+
+  border-radius: 50%;
+
+  background:
+  #1ed760;
+
+  color: #000;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 22px;
+
+  font-weight: 950;
+}
+
+
+.song {
+
+  text-align: left;
+}
+
+
+.song-title {
+
+  font-weight: 950;
+
+  font-size: 16px;
+}
+
+
+.song-artist {
+
+  font-size: 12px;
+
+  color:
+  #1ed760;
+
+  margin-top: 2px;
+}
+
+
+.play {
+
+  width: 42px;
+
+  height: 42px;
+
+  border:
+  2px solid white;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 15px;
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
+.footer {
+
+  margin-top: 21px;
+
+  padding: 17px;
+
+  border-radius: 18px;
+
+  background:
+  rgba(245,239,225,.9);
+
+  text-align: center;
+
+  font-size: 14px;
+
+  line-height: 1.45;
+
+  font-style: italic;
+}
+
+
+.heart {
+
+  color:
+  #ef6d8a;
+
+  font-size: 20px;
+}
+
+
+/* ================================
+   CORIANDOLI
+================================ */
+
+.confetti {
+
+  position: fixed;
+
+  top: -20px;
+
+  width: 8px;
+
+  height: 13px;
+
+  z-index: 1000;
+
+  pointer-events: none;
+
+  animation:
+  confettiFall
+  1.8s ease-out forwards;
+}
+
+
+@keyframes confettiFall {
+
+  to {
+
+    transform:
+    translateY(110vh)
+    rotate(720deg);
+
+    opacity: 0;
+
+  }
+
+}
+
+
+/* ================================
+   SCHERMI PICCOLI
+================================ */
+
+@media (max-width: 380px) {
+
+  .villa-title {
+
+    font-size: 34px;
+
+  }
+
+  .card {
+
+    padding:
+    23px 15px;
+
+  }
+
+  .answer-grid {
+
+    gap: 8px;
+
+  }
+
+}
+
+</style>
 
 </head>
 
@@ -942,162 +1207,277 @@
 <body>
 
 
-  <!-- ================================================
-       INTRO
-       ================================================ -->
+<!-- =====================================
+     SCHERMATA INIZIALE
+===================================== -->
 
-  <div id="intro">
+<div id="intro">
 
-    <div class="intro-content">
+  <div class="intro-content">
 
-      <!-- La tua paperella -->
-      <img
-        src="paperella.png"
-        class="intro-duck"
-        alt="Paperella Villa Maravilla"
-      >
+    <img
+      src="paperella.png"
+      class="intro-duck"
+      alt="Paperella Villa Maravilla"
+    >
 
-      <div class="intro-title">
-        HAI TROVATO LA PAPERELLA 🦆
-      </div>
+    <div class="intro-title">
 
-      <div class="intro-subtitle">
-        Ma forse è stata lei a trovare te...
-      </div>
-
-      <button
-        class="enter-button"
-        onclick="enterVilla()"
-      >
-        TAP TO ENTER 🌴
-      </button>
+      HAI TROVATO LA PAPERELLA 🦆
 
     </div>
 
+
+    <div class="intro-subtitle">
+
+      Ma forse è stata lei a trovare te...
+
+    </div>
+
+
+    <button
+      class="enter-button"
+      onclick="enterVilla()"
+    >
+
+      TAP TO ENTER 🌴
+
+    </button>
+
   </div>
 
-
-
-  <!-- Decorazioni -->
-
-  <div class="sun"></div>
-
-  <div class="palm palm-left">
-    🌴
-  </div>
-
-  <div class="palm palm-right">
-    🌴
-  </div>
+</div>
 
 
 
-  <!-- Bolle -->
+<!-- =====================================
+     DECORAZIONI
+===================================== -->
 
-  <div
-    class="bubble"
-    style="
-      width:20px;
-      height:20px;
-      left:10%;
-      animation-duration:9s;
-    "
-  ></div>
+<div class="sun"></div>
 
-  <div
-    class="bubble"
-    style="
-      width:12px;
-      height:12px;
-      left:25%;
-      animation-duration:12s;
-      animation-delay:3s;
-    "
-  ></div>
+<div class="palm palm-left">
+  🌴
+</div>
 
-  <div
-    class="bubble"
-    style="
-      width:25px;
-      height:25px;
-      left:75%;
-      animation-duration:10s;
-      animation-delay:1s;
-    "
-  ></div>
-
-  <div
-    class="bubble"
-    style="
-      width:10px;
-      height:10px;
-      left:88%;
-      animation-duration:13s;
-      animation-delay:4s;
-    "
-  ></div>
+<div class="palm palm-right">
+  🌴
+</div>
 
 
+<div
+  class="bubble"
+  style="
+  width:20px;
+  height:20px;
+  left:10%;
+  animation-duration:9s;"
+></div>
 
-  <!-- ================================================
-       PAGINA
-       ================================================ -->
 
-  <main class="page">
+<div
+  class="bubble"
+  style="
+  width:12px;
+  height:12px;
+  left:25%;
+  animation-duration:12s;
+  animation-delay:3s;"
+></div>
 
-    <div class="container">
+
+<div
+  class="bubble"
+  style="
+  width:25px;
+  height:25px;
+  left:75%;
+  animation-duration:10s;
+  animation-delay:1s;"
+></div>
 
 
-      <!-- HEADER -->
+<div
+  class="bubble"
+  style="
+  width:10px;
+  height:10px;
+  left:88%;
+  animation-duration:13s;
+  animation-delay:4s;"
+></div>
 
-      <header class="header">
+
+
+<!-- =====================================
+     PAGINA PRINCIPALE
+===================================== -->
+
+<main class="page">
+
+  <div class="container">
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+
+      <img
+        src="paperella.png"
+        class="mini-duck"
+        alt="Paperella"
+      >
+
+
+      <div class="villa-title">
+
+        VILLA
+        <span>MARAVILLA</span>
+
+      </div>
+
+
+      <div class="tag">
+
+        🦆 APPROVATA DALLA PAPERELLA
+
+      </div>
+
+
+    </header>
+
+
+
+    <!-- =================================
+         CARD
+    ================================== -->
+
+    <section class="card">
+
+
+      <!-- =================================
+           MINI GIOCO
+      ================================== -->
+
+      <div
+        id="questionScreen"
+        class="question-screen active"
+      >
+
 
         <img
           src="paperella.png"
-          class="mini-duck"
+          class="question-duck"
           alt="Paperella"
         >
 
-        <div class="villa-title">
-          VILLA
-          <span>MARAVILLA</span>
+
+        <div class="question-kicker">
+
+          Messaggio riservato 🦆
+
         </div>
 
-        <div class="tag">
-          🦆 APPROVATA DALLA PAPERELLA
+
+        <div class="question-title">
+
+          La paperella ha una domanda per te...
+
         </div>
 
-      </header>
+
+        <div class="question-text">
+
+          Sei una persona che prende
+          decisioni discutibili?
+
+        </div>
+
+
+        <div class="answer-grid">
+
+
+          <button
+            class="answer"
+            onclick="chooseAnswer('no')"
+          >
+
+            NO
+
+            <small>
+              Mai nella vita.
+            </small>
+
+          </button>
 
 
 
-      <!-- CARD -->
+          <button
+            class="answer"
+            onclick="chooseAnswer('yes')"
+          >
 
-      <section class="card">
+            ASSOLUTAMENTE SÌ
+
+            <small>
+              Finalmente una persona sincera.
+            </small>
+
+          </button>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- =================================
+           CONTENUTO FINALE
+      ================================== -->
+
+      <div
+        id="mainContent"
+        class="main-content"
+      >
 
 
         <div class="found">
+
           Hai trovato la paperella.
+
         </div>
 
+
         <div class="found-text">
-          Adesso hai due possibilità...
+
+          E hai appena dimostrato di saper
+          prendere ottime decisioni.
+
+        </div>
+
+
+        <div class="choice-title">
+
+          Adesso hai due possibilità 👀
+
         </div>
 
 
 
         <!-- A -->
 
-        <div class="choice-title">
-          Scegli con attenzione 👀
-        </div>
-
-
         <div class="choice choice-a">
 
+
           <div class="choice-label">
+
             A)
+
           </div>
+
 
           <div class="choice-text">
 
@@ -1110,6 +1490,7 @@
 
           </div>
 
+
         </div>
 
 
@@ -1118,9 +1499,13 @@
 
         <div class="choice choice-b">
 
+
           <div class="choice-label">
+
             B)
+
           </div>
+
 
           <div class="choice-text">
 
@@ -1132,6 +1517,7 @@
             🏊‍♀️ 🍹 🎶 😎
 
           </div>
+
 
         </div>
 
@@ -1172,7 +1558,9 @@
           📲 INSTAGRAM
 
           <span class="instagram-small">
+
             Scrivimi “PAPERELLA”
+
           </span>
 
         </a>
@@ -1188,30 +1576,46 @@
           rel="noopener"
         >
 
+
           <div class="spotify-left">
 
+
             <div class="spotify-logo">
+
               ♪
+
             </div>
+
 
             <div class="song">
 
+
               <div class="song-title">
+
                 CALL ME MAYBE
+
               </div>
+
 
               <div class="song-artist">
+
                 Carly Rae Jepsen
+
               </div>
 
+
             </div>
+
 
           </div>
 
 
           <div class="play">
+
             ▶
+
           </div>
+
 
         </a>
 
@@ -1227,61 +1631,192 @@
           <br>
 
           <span class="heart">
+
             ♥
+
           </span>
 
         </div>
 
 
-      </section>
-
-    </div>
-
-  </main>
+      </div>
 
 
+    </section>
 
-  <!-- ================================================
-       JAVASCRIPT
-       ================================================ -->
 
-  <script>
+  </div>
 
-    function enterVilla() {
+</main>
 
-      const intro =
-        document.getElementById("intro");
 
-      intro.classList.add("hidden");
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
+<script>
+
+
+/* ================================
+   ENTRA NELLA PAGINA
+================================ */
+
+function enterVilla() {
+
+  const intro =
+    document.getElementById("intro");
+
+  intro.classList.add("hidden");
+
+
+  if (navigator.vibrate) {
+
+    navigator.vibrate(40);
+
+  }
+
+}
+
+
+
+/* ================================
+   RISPOSTA ALLA DOMANDA
+================================ */
+
+function chooseAnswer(answer) {
+
+
+  const question =
+    document.getElementById(
+      "questionScreen"
+    );
+
+
+  const main =
+    document.getElementById(
+      "mainContent"
+    );
+
+
+  question.classList.remove(
+    "active"
+  );
+
+
+  setTimeout(function() {
+
+
+    question.style.display =
+      "none";
+
+
+    main.classList.add(
+      "active"
+    );
+
+
+    launchConfetti();
+
+
+    if (navigator.vibrate) {
+
+      navigator.vibrate(
+        [30,40,30]
+      );
 
     }
 
 
-    /*
-      Piccola vibrazione quando si entra,
-      se il telefono la supporta.
-    */
+  }, 300);
 
-    function enterVilla() {
-
-      const intro =
-        document.getElementById("intro");
-
-      intro.classList.add("hidden");
+}
 
 
-      if (
-        navigator.vibrate
-      ) {
 
-        navigator.vibrate(40);
+/* ================================
+   CORIANDOLI
+================================ */
 
-      }
+function launchConfetti() {
 
-    }
 
-  </script>
+  const symbols = [
+
+    "🦆",
+    "🌴",
+    "💛",
+    "✨",
+    "🎉",
+    "🍹"
+
+  ];
+
+
+  for (
+    let i = 0;
+    i < 24;
+    i++
+  ) {
+
+
+    const piece =
+      document.createElement(
+        "div"
+      );
+
+
+    piece.className =
+      "confetti";
+
+
+    piece.textContent =
+      symbols[
+        Math.floor(
+          Math.random()
+          * symbols.length
+        )
+      ];
+
+
+    piece.style.left =
+      Math.random() * 100
+      + "vw";
+
+
+    piece.style.fontSize =
+      (12 +
+      Math.random() * 13)
+      + "px";
+
+
+    piece.style.animationDelay =
+      (Math.random() * .35)
+      + "s";
+
+
+    document.body.appendChild(
+      piece
+    );
+
+
+    setTimeout(
+      function() {
+
+        piece.remove();
+
+      },
+      2300
+    );
+
+
+  }
+
+}
+
+</script>
 
 
 </body>
+
 </html>
