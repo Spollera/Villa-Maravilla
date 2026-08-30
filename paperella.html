@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071a13">
+<title>Villa Maravilla 2026 — The End</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #071a13;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+section {
+    min-height: 100vh;
+    padding: 80px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.05;
+}
+
+p {
+    line-height: 1.65;
+}
+
+
+/* ==================================================
+   HERO
+================================================== */
+
+.hero {
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255,190,90,.25),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #0d3325 0%,
+            #071a13 100%
+        );
+}
+
+.sun {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: rgba(255,190,90,.13);
+    filter: blur(5px);
+    top: 8%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.eyebrow {
+    font-size: .8rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    opacity: .65;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(3.3rem, 16vw, 7rem);
+    font-weight: 900;
+    letter-spacing: -4px;
+}
+
+.hero h1 span {
+    display: block;
+    color: #ffd166;
+}
+
+.hero-sub {
+    margin-top: 25px;
+    font-size: 1.05rem;
+    opacity: .8;
+}
+
+.date {
+    margin-top: 35px;
+    font-size: .9rem;
+    letter-spacing: 3px;
+    opacity: .65;
+}
+
+.scroll {
+    position: absolute;
+    bottom: 30px;
+    font-size: .7rem;
+    letter-spacing: 3px;
+    opacity: .5;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+
+}
+
+
+/* ==================================================
+   OSCAR
+================================================== */
+
+.oscars {
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,209,102,.12),
+            transparent 30%
+        ),
+        #0b241a;
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 11vw, 5rem);
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    opacity: .6;
+    max-width: 500px;
+    margin-bottom: 45px;
+}
+
+.award {
+    width: min(100%, 520px);
+    padding: 32px 24px;
+    margin: 18px 0;
+    border-radius: 28px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.08);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 50px rgba(0,0,0,.2);
+
+    transform: translateY(30px);
+    opacity: 0;
+
+    transition: .8s ease;
+}
+
+.award.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.award-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+
+.award-label {
+    color: #ffd166;
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.award h3 {
+    font-size: 1.7rem;
+    margin-bottom: 18px;
+}
+
+.award p {
+    color: rgba(255,255,255,.75);
+    font-size: .95rem;
+}
+
+.highlight {
+    color: #ffd166;
+    font-weight: 800;
+}
+
+
+/* ==================================================
+   SABRI
+================================================== */
+
+.sabri {
+    background:
+        linear-gradient(
+            180deg,
+            #281717 0%,
+            #150d0d 100%
+        );
+}
+
+.sabri .section-title {
+    color: #ff8a80;
+}
+
+.timeline {
+    width: min(100%, 500px);
+    margin-top: 20px;
+    text-align: left;
+}
+
+.timeline-item {
+    border-left: 2px solid rgba(255,138,128,.35);
+    padding: 0 0 35px 25px;
+    position: relative;
+
+    opacity: 0;
+    transform: translateX(-25px);
+
+    transition: .7s ease;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff8a80;
+    left: -7px;
+    top: 3px;
+}
+
+.time {
+    color: #ff8a80;
+    font-size: .7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.timeline-item p {
+    color: rgba(255,255,255,.75);
+}
+
+.panic {
+    margin-top: 35px;
+    padding: 30px 20px;
+    border-radius: 25px;
+    background: rgba(255,255,255,.06);
+}
+
+.panic-big {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ff8a80;
+}
+
+.sabri-final {
+    margin-top: 40px;
+    font-size: 1.15rem;
+    max-width: 450px;
+}
+
+
+/* ==================================================
+   CULITTO + ELEONORA
+================================================== */
+
+.absenti {
+    background: #121b2d;
+}
+
+.missing {
+    font-size: clamp(3rem, 14vw, 6rem);
+    margin: 25px 0;
+}
+
+.case {
+    color: #ff6b6b;
+    font-size: .75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.score {
+    margin-top: 35px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.score div {
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.score span {
+    opacity: .4;
+}
+
+
+/* ==================================================
+   PAPERELLA
+================================================== */
+
+.paperella {
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(255,209,102,.18),
+            transparent 35%
+        ),
+        #18200e;
+}
+
+
+/* La vera paperella PNG */
+
+.duck {
+    width: 180px;
+    height: 180px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation: duckFloat 3s ease-in-out infinite;
+
+    filter:
+        drop-shadow(
+            0 18px 20px rgba(0,0,0,.3)
+        );
+}
+
+.duck img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+@keyframes duckFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(-3deg);
+    }
+
+    50% {
+        transform:
+            translateY(-18px)
+            rotate(3deg);
+    }
+
+}
+
+
+.paperella h2 {
+    font-size: clamp(2.5rem, 11vw, 4.5rem);
+    margin: 25px 0;
+}
+
+.big-no {
+    font-size: clamp(2.2rem, 10vw, 4rem);
+    font-weight: 900;
+    color: #ffd166;
+    margin: 25px 0;
+}
+
+.paperella-text {
+    max-width: 480px;
+    color: rgba(255,255,255,.75);
+}
+
+.insta {
+    margin-top: 35px;
+
+    display: inline-block;
+
+    padding: 17px 28px;
+
+    border-radius: 50px;
+
+    background: #ffd166;
+    color: #17200e;
+
+    text-decoration: none;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 10px 30px
+        rgba(255,209,102,.2);
+
+    transition: .3s;
+}
+
+.insta:active {
+    transform: scale(.95);
+}
+
+
+/* ==================================================
+   FINALE
+================================================== */
+
+.final {
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255,209,102,.18),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #0b241a,
+            #030907
+        );
+}
+
+.names {
+    max-width: 600px;
+
+    font-size: 1rem;
+
+    line-height: 2;
+
+    color: rgba(255,255,255,.7);
+
+    margin: 30px 0;
+}
+
+.final-text {
+    max-width: 500px;
+    color: rgba(255,255,255,.7);
+}
+
+.end {
+    margin-top: 60px;
+}
+
+.end h2 {
+    font-size: clamp(3rem, 15vw, 7rem);
+
+    font-weight: 900;
+
+    letter-spacing: -3px;
+}
+
+.end p {
+    margin-top: 10px;
+    opacity: .45;
+}
+
+
+/* ==================================================
+   CONFETTI
+================================================== */
+
+.confetti {
+    position: fixed;
+
+    top: -20px;
+
+    width: 7px;
+    height: 12px;
+
+    opacity: .8;
+
+    pointer-events: none;
+
+    z-index: 100;
+
+    animation:
+        fall
+        linear
+        forwards;
+}
+
+@keyframes fall {
+
+    to {
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+    }
+
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 480px) {
+
+    section {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .award {
+        padding: 28px 20px;
+    }
+
+    .timeline {
+        padding-left: 5px;
+    }
+
+    .duck {
+        width: 155px;
+        height: 155px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     HERO
+================================================== -->
+
+<section class="hero">
+
+    <div class="sun"></div>
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            Trullo Aribi · Ostuni · Puglia
+        </div>
+
+        <h1>
+            VILLA
+            <span>MARAVILLA</span>
+        </h1>
+
+        <div class="hero-sub">
+            27 → 30 AGOSTO 2026
+        </div>
+
+        <div class="date">
+            THE END.
+        </div>
+
+    </div>
+
+    <div class="scroll">
+        ↓ SCORRI PER RIVIVERE LA TRAGEDIA ↓
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     OSCAR
+================================================== -->
+
+<section class="oscars">
+
+    <div class="section-title">
+        🏆
+    </div>
+
+    <h2 class="section-title">
+        GLI OSCAR
+    </h2>
+
+    <p class="section-subtitle">
+        Perché una vacanza del genere meritava
+        dei riconoscimenti ufficiali.
+    </p>
+
+
+    <!-- FABIONE -->
+
+    <div class="award">
+
+        <div class="award-icon">
+            💤
+        </div>
+
+        <div class="award-label">
+            Miglior interpretazione
+        </div>
+
+        <h3>
+            FABIONE
+        </h3>
+
+        <p>
+
+            Grazie Fabione per i tuoi mille pisolini
+            e per quella
+            <span class="highlight">
+                possente presenza
+            </span>
+            che ha accompagnato ogni momento
+            della vacanza.
+
+            <br><br>
+
+            Non sappiamo quante ore tu abbia dormito.
+
+            Sappiamo però che erano sempre quelle sbagliate.
+
+        </p>
+
+    </div>
+
+
+    <!-- TROMBERTO + MAURA -->
+
+    <div class="award">
+
+        <div class="award-icon">
+            🍸
+        </div>
+
+        <div class="award-label">
+            Reparto ristorazione & mixology
+        </div>
+
+        <h3>
+            TROMBERTO & MAURA
+        </h3>
+
+        <p>
+
+            Grazie per aver sfamato,
+            abbeverato e mantenuto in vita
+            questo branco di incapaci.
+
+            <br><br>
+
+            Tra cucina e cocktail avete dimostrato
+            che senza di voi probabilmente saremmo
+            sopravvissuti a
+
+            <span class="highlight">
+                pane e ghiaccio.
+            </span>
+
+        </p>
+
+    </div>
+
+
+    <!-- GIGGIO -->
+
+    <div class="award">
+
+        <div class="award-icon">
+            📢
+        </div>
+
+        <div class="award-label">
+            Miglior utilizzo delle corde vocali
+        </div>
+
+        <h3>
+            GIGGIO
+        </h3>
+
+        <p>
+
+            Una voglia di bere apparentemente inesauribile.
+
+            <br>
+
+            Una resistenza all'alcol
+            scientificamente inspiegabile.
+
+            <br><br>
+
+            E soprattutto una domanda che rimarrà
+            per sempre nei nostri cuori:
+
+            <br><br>
+
+            <span
+                class="highlight"
+                style="font-size:1.5rem;"
+            >
+                FIOREEEELAAAAAA!!!
+            </span>
+
+        </p>
+
+    </div>
+
+
+    <!-- SALSANO -->
+
+    <div class="award">
+
+        <div class="award-icon">
+            🏐
+        </div>
+
+        <div class="award-label">
+            Atleta più scorretto dell'anno
+        </div>
+
+        <h3>
+            SALSANO
+        </h3>
+
+        <p>
+
+            Grazie Salsano per aver inventato
+            il
+
+            <span class="highlight">
+                Salso Volley
+            </span>,
+
+            lo sport più scorretto mai praticato
+            su un campo da pallavolo.
+
+            <br><br>
+
+            Regole: nessuna.<br>
+            Fair play: inesistente.<br>
+            Contatti fisici: troppi.
+
+            <br><br>
+
+            E grazie soprattutto per aver finalmente
+            imparato a grigliare il pesce sulla piastra.
+
+            <br><br>
+
+            <span class="highlight">
+                Forse.
+            </span>
+
+        </p>
+
+    </div>
+
+
+    <!-- MANU -->
+
+    <div class="award">
+
+        <div class="award-icon">
+            🧹
+        </div>
+
+        <div class="award-label">
+            Badante dell'anno
+        </div>
+
+        <h3>
+            MANU
+        </h3>
+
+        <p>
+
+            Grazie Manu per i servigi prestati
+            alla casa e soprattutto per il tuo
+            instancabile lavoro di assistenza
+            nei confronti di Salsano.
+
+            <br><br>
+
+            Compagna.<br>
+            Badante.<br>
+            Donna delle pulizie.<br>
+            Responsabile della tavola.
+
+            <br><br>
+
+            <span class="highlight">
+                Multiclasse livello 99.
+            </span>
+
+            <br><br>
+
+            E grazie per aver mantenuto questa casa
+            vagamente presentabile nonostante noi.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     SABRI
+================================================== -->
+
+<section class="sabri">
+
+    <div class="section-title">
+        🦠
+    </div>
+
+    <h2 class="section-title">
+        GRAZIE<br>
+        SABRI
+    </h2>
+
+    <p class="section-subtitle">
+
+        Per non averci contagiato.
+
+        <br>
+
+        Probabilmente.
+
+    </p>
+
+
+    <div class="timeline">
+
+
+        <div class="timeline-item">
+
+            <div class="time">
+                GIOVEDÌ · 11:00
+            </div>
+
+            <p>
+                Partenza.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="time">
+                11:47
+            </div>
+
+            <p>
+                "Ragazzi forse non sto benissimo."
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="time">
+                12:15
+            </div>
+
+            <p>
+                Prima sosta.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="time">
+                12:47
+            </div>
+
+            <p>
+                Seconda sosta.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="time">
+                AUTOGRILL
+            </div>
+
+            <p>
+                Bagno.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="time">
+                AUTOGRILL · PARTE 2
+            </div>
+
+            <p>
+                Altro bagno.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="time">
+                SITUAZIONE
+            </div>
+
+            <p>
+                Vomito.<br>
+                Cacca.<br>
+                Mascherine.<br>
+                Preghiere.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="time">
+                CERIGNOLA
+            </div>
+
+            <p>
+
+                Quando la situazione sembrava
+                ormai fuori controllo,
+                abbiamo deciso di fare una breve
+                deviazione turistica al
+
+                <strong>
+                    Pronto Soccorso di Cerignola.
+                </strong>
+
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="time">
+                FLEBO
+            </div>
+
+            <p>
+                Cura intensiva della Sabri.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="time">
+                20:00
+            </div>
+
+            <p>
+                Arrivo finalmente in villa.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="panic">
+
+        <div class="panic-big">
+            9 ORE.
+        </div>
+
+        <p>
+
+            Partenza: 11:00<br>
+            Arrivo: 20:00
+
+        </p>
+
+        <p style="margin-top:15px;">
+
+            Io e Fabione abbiamo passato
+            praticamente tutto il viaggio
+            con le mascherine.
+
+        </p>
+
+    </div>
+
+
+    <p class="sabri-final">
+
+        ❤️ Grazie Sabri.
+
+        <br><br>
+
+        Per aver condiviso con noi questa esperienza.
+
+        <br>
+
+        Per averci fatto conoscere ogni autogrill dell'A14.
+
+        <br>
+
+        Per averci fatto apprezzare
+        il valore della mascherina.
+
+        <br><br>
+
+        E soprattutto...
+
+        <br><br>
+
+        <strong>
+            GRAZIE PER NON AVERCI CONTAGIATO.
+        </strong>
+
+        <br><br>
+
+        <small>
+
+            Crediamo in te.<br>
+            Crediamo nel nostro sistema immunitario.
+
+        </small>
+
+    </p>
+
+</section>
+
+
+
+<!-- ==================================================
+     CULITTO + ELEONORA
+================================================== -->
+
+<section class="absenti">
+
+    <div class="case">
+        MISSING IN ACTION
+    </div>
+
+
+    <div class="missing">
+        🤧
+    </div>
+
+
+    <h2 class="section-title">
+
+        CULITTO<br>
+        & ELEONORA
+
+    </h2>
+
+
+    <p class="section-subtitle">
+
+        Dovevano esserci.<br>
+        Avevano un posto.<br>
+        Avevano una villa.<br>
+        Avevano noi.
+
+    </p>
+
+
+    <div class="panic">
+
+        <p>
+            Ma poi è arrivato...
+        </p>
+
+
+        <div class="panic-big">
+
+            IL MAL<br>
+            DI GOLA.
+
+        </div>
+
+
+        <p>
+
+            Un mal di gola talmente brutto
+            da impedire a Culitto di affrontare
+            Villa Maravilla.
+
+        </p>
+
+
+        <br>
+
+
+        <p>
+
+            Eleonora, inspiegabilmente,
+            ha deciso di seguire il destino
+            del suo compagno.
+
+        </p>
+
+    </div>
+
+
+    <div class="score">
+
+        <div>
+
+            VILLA<br>
+            MARAVILLA
+
+            <br>
+
+            <span style="color:#ffd166;">
+                8
+            </span>
+
+        </div>
+
+
+        <span>
+            VS
+        </span>
+
+
+        <div>
+
+            CULITTO<br>
+            & ELEONORA
+
+            <br>
+
+            <span style="color:#ff6b6b;">
+                0
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <p
+        style="
+            margin-top:45px;
+            opacity:.6;
+            max-width:430px;
+        "
+    >
+
+        Ci siete mancati.
+
+        <br><br>
+
+        Ma soprattutto ci è mancato Culitto
+        che diceva che sarebbe venuto.
+
+    </p>
+
+</section>
+
+
+
+<!-- ==================================================
+     PAPERELLA
+================================================== -->
+
+<section class="paperella">
+
+
+    <div class="duck">
+
+        <!-- USA IL PNG GIÀ PRESENTE NELLA REPOSITORY -->
+
+        <img
+            src="paperella.png"
+            alt="Paperella Villa Maravilla"
+        >
+
+    </div>
+
+
+    <h2>
+
+        UNA MENZIONE<br>
+        SPECIALE
+
+    </h2>
+
+
+    <p class="paperella-text">
+
+        Grazie a Damiano per aver passato
+        non si sa quante ore a creare delle
+        fantastiche paperelle NFC da distribuire
+        durante la vacanza.
+
+    </p>
+
+
+    <div class="big-no">
+
+        CHE NON SONO<br>
+        MAI STATE DISTRIBUITE.
+
+    </div>
+
+
+    <p class="paperella-text">
+
+        Un investimento tecnologico
+        completamente inutile.
+
+        <br><br>
+
+        Ma non è troppo tardi.
+
+    </p>
+
+
+    <!--
+        SOSTITUISCI QUESTO LINK
+        CON IL TUO PROFILO INSTAGRAM
+    -->
+
+    <a
+        class="insta"
+        href="https://www.instagram.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+
+        🦆 VOGLIO LA PAPERELLA
+
+    </a>
+
+
+    <p
+        style="
+            margin-top:15px;
+            opacity:.45;
+            font-size:.8rem;
+        "
+    >
+
+        Scrivimi "PAPERELLA" su Instagram
+
+    </p>
+
+</section>
+
+
+
+<!-- ==================================================
+     FINALE
+================================================== -->
+
+<section class="final">
+
+
+    <div class="eyebrow">
+        Villa Maravilla 2026
+    </div>
+
+
+    <h2 class="section-title">
+
+        GRAZIE<br>
+        RAGAZZI ❤️
+
+    </h2>
+
+
+    <div class="names">
+
+        Damiano · Giggio · Fabione · Tromberto · Maura
+        · La Sabri · Salsano · Manu
+
+    </div>
+
+
+    <p class="final-text">
+
+        Quattro giorni di villa.<br>
+        Piscina.<br>
+        Cocktail.<br>
+        Cibo.<br>
+        Musica.<br>
+        Risate.<br>
+        Qualche problema intestinale.<br>
+        Qualche problema vocale.<br>
+        Qualche problema con il Salso Volley.
+
+        <br><br>
+
+        Ma soprattutto una vacanza che,
+        probabilmente,
+        ci ricorderemo per parecchio tempo.
+
+    </p>
+
+
+    <div class="end">
+
+        <h2>
+            FINE.
+        </h2>
+
+        <p>
+            Ci vediamo alla prossima.
+        </p>
+
+    </div>
+
+
+</section>
+
+
+
+<script>
+
+
+/* ==================================================
+   ANIMAZIONI QUANDO SI SCORRE
+================================================== */
+
+const observer =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target
+                        .classList
+                        .add("visible");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.15
+        }
+
+    );
+
+
+document
+    .querySelectorAll(
+        ".award, .timeline-item"
+    )
+    .forEach(el => {
+
+        observer.observe(el);
+
+    });
+
+
+
+/* ==================================================
+   CONFETTI
+================================================== */
+
+function confetti() {
+
+    for (let i = 0; i < 80; i++) {
+
+        const piece =
+            document.createElement("div");
+
+        piece.className =
+            "confetti";
+
+
+        piece.style.left =
+            Math.random() * 100 + "vw";
+
+
+        piece.style.animationDuration =
+            (3 + Math.random() * 4) + "s";
+
+
+        piece.style.animationDelay =
+            Math.random() * 2 + "s";
+
+
+        piece.style.transform =
+            `rotate(${Math.random() * 360}deg)`;
+
+
+        document
+            .body
+            .appendChild(piece);
+
+
+        setTimeout(
+            () => piece.remove(),
+            7000
+        );
+
+    }
+
+}
+
+
+
+/* ==================================================
+   CONFETTI AL FINALE
+================================================== */
+
+const finalSection =
+    document.querySelector(".final");
+
+
+const finalObserver =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    confetti();
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.4
+        }
+
+    );
+
+
+finalObserver.observe(finalSection);
+
+</script>
+
+
+</body>
+</html>
